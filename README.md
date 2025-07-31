@@ -27,13 +27,19 @@ This project provides a containerized version of [AutoTrain Advanced](https://gi
    cd autotrain-docker
    ```
 
-2. **Create a `.env` file in the project root:**
+2. **Create the required data directory:**
+   ```bash
+   # Create autotrain-data directory for volume mounting
+   mkdir -p autotrain-data
+   ```
+
+3. **Create a `.env` file in the project root:**
    ```bash
    # Create .env file
    touch .env
    ```
 
-3. **Add your Hugging Face token to the `.env` file:**
+4. **Add your Hugging Face token to the `.env` file:**
    ```bash
    # Add your HF token to .env file
    echo "HF_TOKEN=your_huggingface_token_here" >> .env
@@ -78,7 +84,7 @@ autotrain-docker/
 ├── docker-compose.yml    # Docker Compose configuration
 ├── Dockerfile           # Docker image definition
 ├── .env                 # Environment variables (create this)
-├── autotrain-data/      # Persistent data directory
+├── autotrain-data/      # Persistent data directory (create this)
 └── README.md           # This file
 ```
 
