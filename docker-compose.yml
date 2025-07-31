@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  autotrain:
+    # This tells Docker Compose to build the image from the Dockerfile
+    # in the current directory (.) and name it 'autotrain-docker-img'.
+    build:
+      context: .
+    image: autotrain-docker-img
+    
+    container_name: autotrain-docker-app
+    ports:
+      - "7860:7860"
+    volumes:
+      # This correctly maps your data folder to the container.
+      # './autotrain-data' is a relative path to the folder next to this file.
+      - ./autotrain-data:/app/data
+    environment:
+      # Reads your Hugging Face token from the .env file for security.
+      - HF_TOKEN=${HF_TOKEN}
+    # Automatically restarts the container unless you manually stop it.
+    restart: unless-stopped
